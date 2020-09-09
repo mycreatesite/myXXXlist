@@ -17,6 +17,7 @@
         <router-view />
       </v-container>
     </v-main>
+    <Loading />
   </v-app>
 </template>
 
@@ -24,10 +25,13 @@
 import firebase from "firebase";
 import { mapActions } from "vuex";
 import SideNav from "@/components/SideNav";
+import Loading from "@/components/Loading";
+
 export default {
   name: "App",
   components: {
     SideNav,
+    Loading,
   },
   created() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -35,11 +39,11 @@ export default {
         this.setLoginUser(user);
         this.fetchItemData();
         if (this.$router.currentRoute.name === "home") {
-          this.$router.push({ name: "saveditems" });
+          this.$router.push({ name: "saveditems" }).catch(() => {});
         }
       } else {
         this.deleteLoginUser();
-        this.$router.push({ name: "home" });
+        this.$router.push({ name: "home" }).catch(() => {});
       }
     });
   },

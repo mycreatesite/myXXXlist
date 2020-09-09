@@ -2,25 +2,25 @@
   <v-container text-xs-center>
     <v-layout row wrap justify-center>
       <v-flex xs12 class="text-center">
-        <h1>居酒屋を登録する</h1>
+        <h1>ホッピー居酒屋を登録する</h1>
       </v-flex>
 
       <v-flex xs12 md6 mt-5>
         <v-card>
           <v-card-text>
             <v-form>
-              <v-text-field v-model="itemData.name" label="名前"></v-text-field>
+              <v-text-field v-model="itemData.name" label="店名"></v-text-field>
               <v-text-field
                 v-model="itemData.tel"
                 label="電話番号"
               ></v-text-field>
               <v-text-field
-                v-model="itemData.email"
-                label="メールアドレス"
+                v-model="itemData.station"
+                label="最寄駅"
               ></v-text-field>
               <v-text-field
-                v-model="itemData.address"
-                label="住所"
+                v-model="itemData.remark"
+                label="備考"
               ></v-text-field>
               <div class="text-center">
                 <v-btn @click="$router.push({ name: 'saveditems' })"

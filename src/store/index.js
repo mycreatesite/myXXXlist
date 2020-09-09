@@ -6,19 +6,23 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    loginUser: null,
     drawer: false,
+    loading: true,
+    loginUser: null,
     itemDataList: [],
   },
   mutations: {
+    toggleSideMenu(state) {
+      state.drawer = !state.drawer;
+    },
+    closeLoading(state) {
+      state.loading = false;
+    },
     setLoginUser(state, user) {
       state.loginUser = user;
     },
     deleteLoginUser(state) {
       state.loginUser = null;
-    },
-    toggleSideMenu(state) {
-      state.drawer = !state.drawer;
     },
     addItemData(state, { id, itemData }) {
       itemData.id = id;
@@ -38,6 +42,12 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    toggleSideMenu({ commit }) {
+      commit("toggleSideMenu");
+    },
+    closeLoading({ commit }) {
+      commit("closeLoading");
+    },
     setLoginUser({ commit }, user) {
       commit("setLoginUser", user);
     },
@@ -61,9 +71,6 @@ export default new Vuex.Store({
     },
     logout() {
       firebase.auth().signOut();
-    },
-    toggleSideMenu({ commit }) {
-      commit("toggleSideMenu");
     },
     addItemData({ getters, commit }, itemData) {
       if (getters.uid) {
