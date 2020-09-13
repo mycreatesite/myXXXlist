@@ -3,7 +3,15 @@
     <v-container text-xs-center>
       <v-layout row wrap justify-center>
         <v-flex xs12 pb-6 class="text-center">
-          <h1>ホッピー居酒屋を登録する</h1>
+          <h1
+            v-if="!$router.currentRoute.params.item_id"
+            class="font-weight-bold text-h5 text-md-h4"
+          >
+            ホッピー居酒屋を<br class="d-md-none" />登録する
+          </h1>
+          <h1 v-else class="font-weight-bold text-h5 text-md-h4">
+            ホッピー居酒屋を<br class="d-md-none" />編集する
+          </h1>
         </v-flex>
 
         <v-flex xs12 md6 mt-5>
