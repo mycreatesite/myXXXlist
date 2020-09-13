@@ -7,7 +7,7 @@
             v-if="!$router.currentRoute.params.item_id"
             class="font-weight-bold text-h5 text-md-h4"
           >
-            ホッピー居酒屋を<br class="d-md-none" />登録する
+            ホッピー居酒屋を<br class="d-md-none" />追加する
           </h1>
           <h1 v-else class="font-weight-bold text-h5 text-md-h4">
             ホッピー居酒屋を<br class="d-md-none" />編集する
