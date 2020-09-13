@@ -1,0 +1,78 @@
+@import "mixin.scss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Sawarabi+Gothic&display=swap");
+
+.second {
+  .container--fluid {
+    padding-top: 4rem;
+  }
+}
+
+.v-btn {
+  padding: 1rem 2rem;
+}
+
+.v-data-table.itemList {
+  word-break: break-all;
+  .v-data-table__wrapper {
+    th,
+    td {
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+      height: auto;
+    }
+    .v-data-table-header-mobile {
+      tr th {
+        padding-bottom: 2rem;
+      }
+    }
+    .v-data-table__mobile-row {
+      &:last-of-type {
+        padding-bottom: 2rem;
+      }
+    }
+    .v-data-table__mobile-row__header {
+      opacity: 0.8;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      text-align: right;
+    }
+    .v-data-table__mobile-row__cell {
+      text-align: left;
+    }
+    @include media-down(sm) {
+      tbody {
+        tr {
+          td {
+            display: block;
+            &:first-of-type {
+              .v-data-table__mobile-row__cell {
+                font-size: 1.1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    @include media-up(md) {
+      .v-data-table-header {
+        tr th {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        }
+      }
+      tbody {
+        tr {
+          th,
+          td {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            height: auto;
+          }
+          td:first-of-type {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+}

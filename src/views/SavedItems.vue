@@ -1,33 +1,43 @@
 <template>
-  <v-container text-xs-center justify-center>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <h1>俺のホッピー居酒屋たち</h1>
-      </v-flex>
+  <v-container fluid>
+    <v-container justify-center>
+      <v-layout row wrap>
+        <v-flex xs12 text-center text-md-left>
+          <h1 class="font-weight-bold text-h5 text-md-h4">
+            俺の<br class="d-md-none" />ホッピー居酒屋たち
+          </h1>
+        </v-flex>
 
-      <v-flex xs12 mt-5 mr-5 text-right>
-        <router-link :to="{ name: 'registform' }">
-          <v-btn color="info">
-            ホッピー居酒屋を追加する
-          </v-btn>
-        </router-link>
-      </v-flex>
+        <v-flex xs12 mt-8 pb-6 text-center text-md-right>
+          <router-link :to="{ name: 'registform' }">
+            <v-btn large color="secondary">
+              ホッピー居酒屋を追加する
+            </v-btn>
+          </router-link>
+        </v-flex>
 
-      <v-flex xs12 mt-3 justify-center>
-        <v-data-table :headers="headers" :items="itemData">
-          <template v-slot:item.action="{ item }">
-            <router-link
-              :to="{ name: 'registform', params: { item_id: item.id } }"
-            >
-              <v-icon small class="mr-2">mdi-pencil</v-icon>
-            </router-link>
-            <v-icon small class="mr-2" @click="deleteConfirm(item.id)"
-              >mdi-delete</v-icon
-            >
-          </template>
-        </v-data-table>
-      </v-flex>
-    </v-layout>
+        <v-flex xs12 mt-3 justify-center>
+          <v-data-table
+            :headers="headers"
+            :items="itemData"
+            loading
+            loading-text="Please wait"
+            class="itemList"
+          >
+            <template v-slot:item.action="{ item }">
+              <router-link
+                :to="{ name: 'registform', params: { item_id: item.id } }"
+              >
+                <v-icon small class="mr-2">mdi-pencil</v-icon>
+              </router-link>
+              <v-icon small class="mr-2" @click="deleteConfirm(item.id)"
+                >mdi-delete</v-icon
+              >
+            </template>
+          </v-data-table>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </v-container>
 </template>
 

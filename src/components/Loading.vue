@@ -33,8 +33,8 @@ export default {
   z-index: 10;
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  color: #1976d2;
+  background-color: #202020;
+  color: #af8a1e;
 }
 .fade-enter-active,
 .fade-leave-active {

@@ -1,38 +1,45 @@
 <template>
-  <v-container text-xs-center>
-    <v-layout row wrap justify-center>
-      <v-flex xs12 class="text-center">
-        <h1>ホッピー居酒屋を登録する</h1>
-      </v-flex>
+  <v-container fluid>
+    <v-container text-xs-center>
+      <v-layout row wrap justify-center>
+        <v-flex xs12 pb-6 class="text-center">
+          <h1>ホッピー居酒屋を登録する</h1>
+        </v-flex>
 
-      <v-flex xs12 md6 mt-5>
-        <v-card>
-          <v-card-text>
-            <v-form>
-              <v-text-field v-model="itemData.name" label="店名"></v-text-field>
-              <v-text-field
-                v-model="itemData.tel"
-                label="電話番号"
-              ></v-text-field>
-              <v-text-field
-                v-model="itemData.station"
-                label="最寄駅"
-              ></v-text-field>
-              <v-text-field
-                v-model="itemData.remark"
-                label="備考"
-              ></v-text-field>
-              <div class="text-center">
-                <v-btn @click="$router.push({ name: 'saveditems' })"
-                  >キャンセル</v-btn
-                >
-                <v-btn color="info" class="ml-2" @click="submit">保存</v-btn>
-              </div>
-            </v-form>
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
+        <v-flex xs12 md6 mt-5>
+          <v-card>
+            <v-card-text>
+              <v-form>
+                <v-text-field
+                  v-model="itemData.name"
+                  label="店名"
+                ></v-text-field>
+                <v-text-field
+                  v-model="itemData.tel"
+                  label="電話番号"
+                ></v-text-field>
+                <v-text-field
+                  v-model="itemData.station"
+                  label="最寄駅"
+                ></v-text-field>
+                <v-text-field
+                  v-model="itemData.remark"
+                  label="備考"
+                ></v-text-field>
+                <div class="text-center">
+                  <v-btn large @click="$router.push({ name: 'saveditems' })"
+                    >キャンセル</v-btn
+                  >
+                  <v-btn large color="secondary" class="ml-2" @click="submit"
+                    >保存</v-btn
+                  >
+                </div>
+              </v-form>
+            </v-card-text>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </v-container>
 </template>
 
