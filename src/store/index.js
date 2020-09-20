@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import firebase from "firebase";
+import vueConfig from "../../vue.config";
 
 Vue.use(Vuex);
 
@@ -10,6 +11,11 @@ export default new Vuex.Store({
     loading: true,
     loginUser: null,
     itemDataList: [],
+    theme: {
+      title: vueConfig.pages.index.title,
+      keyword: vueConfig.pages.index.keyword,
+      img: "/img/theme.png",
+    },
   },
   mutations: {
     toggleSideMenu(state) {
@@ -114,5 +120,7 @@ export default new Vuex.Store({
     uid: (state) => (state.loginUser ? state.loginUser.uid : null),
     getItemDataById: (state) => (id) =>
       state.itemDataList.find((itemData) => itemData.id === id),
+    getThemeKeyword: (state) => state.theme.keyword,
+    getThemeImg: (state) => state.theme.img,
   },
 });

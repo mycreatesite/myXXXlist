@@ -2,16 +2,18 @@
   <v-container fluid>
     <v-container justify-center>
       <v-layout row wrap>
-        <v-flex xs12 text-center text-md-left>
+        <v-flex xs12 text-center>
           <h1 class="font-weight-bold text-h5 text-md-h4">
-            俺の<br class="d-md-none" />ホッピー居酒屋たち
+            <span class="font-family-accent"
+              >俺の<br class="d-md-none" />{{ getThemeKeyword }}たち</span
+            >
           </h1>
         </v-flex>
 
-        <v-flex xs12 mt-8 pb-6 text-center text-md-right>
+        <v-flex xs12 mt-10 pb-10 text-center>
           <router-link :to="{ name: 'registform' }">
-            <v-btn large color="secondary">
-              ホッピー居酒屋を追加する
+            <v-btn tile x-large color="secondary">
+              {{ getThemeKeyword }}を追加する
             </v-btn>
           </router-link>
         </v-flex>
@@ -20,17 +22,18 @@
           <v-data-table
             :headers="headers"
             :items="itemData"
-            loading
-            loading-text="Please wait"
             class="itemList"
+            no-data-text="データが無いっす。"
+            :header-props="headerProps"
+            mobile-breakpoint="960"
           >
             <template v-slot:item.action="{ item }">
               <router-link
                 :to="{ name: 'registform', params: { item_id: item.id } }"
               >
-                <v-icon small class="mr-2">mdi-pencil</v-icon>
+                <v-icon large class="mr-2">mdi-pencil</v-icon>
               </router-link>
-              <v-icon small class="mr-2" @click="deleteConfirm(item.id)"
+              <v-icon large class="mr-2" @click="deleteConfirm(item.id)"
                 >mdi-delete</v-icon
               >
             </template>
@@ -43,6 +46,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   created() {
     this.itemData = this.$store.state.itemDataList;
@@ -57,6 +61,9 @@ export default {
         { text: "操作", value: "action", sortable: false },
       ],
       itemData: [],
+      headerProps: {
+        sortByText: "並べ替え",
+      },
     };
   },
   methods: {
@@ -66,6 +73,9 @@ export default {
       }
     },
     ...mapActions(["deleteItemData"]),
+  },
+  computed: {
+    ...mapGetters(["getThemeKeyword", "getThemeImg"]),
   },
 };
 </script>

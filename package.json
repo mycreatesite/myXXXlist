@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@mdi/font": "^5.5.55",
+    "babel-polyfill": "^6.26.0",
     "core-js": "^3.6.5",
     "firebase": "^7.19.1",
     "vue": "^2.6.11",

@@ -3,8 +3,13 @@ import Vue from "vue";
 import Vuetify from "vuetify/lib";
 
 Vue.use(Vuetify);
+import ja from "vuetify/es5/locale/ja";
 
 export default new Vuetify({
+  lang: {
+    locales: { ja },
+    current: "ja",
+  },
   theme: {
     dark: true,
     themes: {
@@ -16,6 +21,8 @@ export default new Vuetify({
         warning: "#ffc107",
         info: "#ff5722",
         success: "#795548",
+        disable: "#888888",
+        google: "#4285F4",
       },
     },
   },
