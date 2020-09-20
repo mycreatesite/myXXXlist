@@ -1,10 +1,12 @@
+import "babel-polyfill";
 import Vue from "vue";
 import "@babel/polyfill";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import vuetify from "./plugins/vuetify";
-import firebase from "firebase";
+import vuetify from "@/plugins/vuetify";
+import firebase from "firebase/app";
+import "firebase/analytics";
 
 Vue.config.productionTip = false;
 

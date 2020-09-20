@@ -9,7 +9,8 @@
 <script>
 // @ is an alias to /src
 import { mapActions } from "vuex";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 export default {
   beforeCreate() {
     firebase.auth().onAuthStateChanged(() => {
