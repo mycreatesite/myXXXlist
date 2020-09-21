@@ -1,6 +1,7 @@
 @import "mixin";
 @import "_form";
 @import "_table";
+@import "_loading";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Sawarabi+Gothic&display=swap");
 
 a {
@@ -8,7 +9,7 @@ a {
 }
 
 .btn-maxLarge {
-  padding: 0.75rem 3rem !important;
+  padding: 1rem 3rem !important;
   height: auto !important;
   font-weight: bold;
   @include media-up(md) {
@@ -19,18 +20,6 @@ a {
   }
 }
 
-.router-enter-active,
-.router-leave-active {
-  transition-property: opacity transform;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-}
-.router-enter,
-.router-leave-to {
-  opacity: 0;
-  transform: translateY(0.5rem);
-}
-
 .logo {
   position: fixed;
   z-index: -70;
@@ -38,7 +27,7 @@ a {
   left: -2rem;
   width: 50vh;
   height: 50vh;
-  opacity: 0.6;
+  opacity: 0.4;
   .logoInner {
     width: 100%;
     height: 100%;
@@ -89,9 +78,38 @@ a {
   font-family: $accent-font-family;
 }
 
+.second {
+  .container--fluid {
+    padding-top: 4rem;
+  }
+}
+
+.v-btn {
+  padding: 1rem 2rem;
+  &.v-btn--outlined {
+    border-width: 3px;
+  }
+}
+
+.font-family-accent {
+  font-family: $accent-font-family !important;
+}
+
 .theme--dark {
-  &.v-navigation-drawer {
-    background-color: $primary;
+  &.v-application {
+    &.v-navigation-drawer {
+      background-color: $primary;
+    }
+    input,
+    textarea {
+      caret-color: #fff;
+    }
+    textarea {
+      padding: 1rem 0;
+    }
+    a {
+      color: #fff;
+    }
   }
 }
 
@@ -129,21 +147,4 @@ a {
 
 .v-application .theme--dark .primary--text {
   color: rgba(#fff, 0.5) !important;
-}
-
-.second {
-  .container--fluid {
-    padding-top: 4rem;
-  }
-}
-
-.v-btn {
-  padding: 1rem 2rem;
-  &.v-btn--outlined {
-    border-width: 3px;
-  }
-}
-
-.font-family-accent {
-  font-family: $accent-font-family !important;
 }

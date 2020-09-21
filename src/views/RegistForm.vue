@@ -31,10 +31,11 @@
                   v-model="itemData.station"
                   label="最寄駅"
                 ></v-text-field>
-                <v-text-field
+                <v-textarea
+                  auto-grow
                   v-model="itemData.remark"
                   label="備考"
-                ></v-text-field>
+                ></v-textarea>
                 <div class="text-center py-6">
                   <v-btn
                     tile

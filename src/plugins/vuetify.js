@@ -20,7 +20,7 @@ export default new Vuetify({
         error: "#ffeb3b",
         warning: "#ffc107",
         info: "#ff5722",
-        success: "#795548",
+        success: "#92ddff",
         disable: "#888888",
       },
     },

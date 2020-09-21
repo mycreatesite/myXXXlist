@@ -1,8 +1,8 @@
 <template>
   <v-container fluid>
-    <v-container justify-center>
-      <v-layout row wrap>
-        <v-flex xs12 text-center>
+    <v-container justify-center class="px-0">
+      <v-row>
+        <v-col cols="12" class="text-center">
           <h1 class="font-weight-bold text-h5 text-md-h4">
             <span class="font-family-accent">
               <span class="accentImgGroup">
@@ -14,46 +14,64 @@
               {{ getThemeKeyword }}たち
             </span>
           </h1>
-        </v-flex>
+        </v-col>
 
-        <v-flex xs12 mt-10 pb-10 text-center>
+        <v-col cols="12" class="text-center mt-6 pb-8">
           <router-link :to="{ name: 'registform' }">
             <v-btn outlined tile color="accent" class="btn-maxLarge">
               {{ getThemeKeyword }}を追加する
             </v-btn>
           </router-link>
-        </v-flex>
+        </v-col>
 
-        <v-flex xs12 mt-3 justify-center>
+        <v-col cols="12" justify-center class="mt-3">
           <v-data-table
             :headers="headers"
             :items="itemData"
-            class="itemList"
-            no-data-text="データが無いっす。"
             :header-props="headerProps"
             mobile-breakpoint="960"
+            class="itemList"
+            no-data-text="データが無いっす。"
           >
-            <template v-slot:item.action="{ item }">
-              <router-link
-                :to="{ name: 'registform', params: { item_id: item.id } }"
-              >
-                <v-btn class="ma-2" tile outlined color="secondary">
-                  <v-icon left>mdi-pencil</v-icon> 編集
-                </v-btn>
-              </router-link>
-              <v-btn
-                class="ma-2"
-                tile
-                outlined
-                color="disable"
-                @click="deleteConfirm(item.id)"
-              >
-                <v-icon left>mdi-delete</v-icon> 削除
+            <template v-slot:item.tel="{ item }">
+              <v-btn block large tile color="secondary">
+                <v-icon left>mdi-phone-in-talk</v-icon>
+                <a :href="`tel:${item.tel}`">{{ item.tel }}</a>
               </v-btn>
             </template>
+            <template v-slot:item.remark="{ item }">
+              <div class="js-autoLink">{{ item.remark }}</div>
+            </template>
+            <template v-slot:item.action="{ item }">
+              <v-row class="wrap">
+                <v-col cols="6" md="12">
+                  <router-link
+                    :to="{ name: 'registform', params: { item_id: item.id } }"
+                    class="d-block"
+                  >
+                    <v-btn large block tile outlined color="secondary">
+                      <v-icon left>mdi-pencil</v-icon>
+                      編集
+                    </v-btn>
+                  </router-link>
+                </v-col>
+                <v-col cols="6" md="12">
+                  <v-btn
+                    tile
+                    block
+                    large
+                    outlined
+                    color="disable"
+                    @click="deleteConfirm(item.id)"
+                  >
+                    <v-icon left>mdi-delete</v-icon> 削除
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </template>
           </v-data-table>
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
     </v-container>
   </v-container>
 </template>
@@ -68,6 +86,21 @@ export default {
   },
   created() {
     this.itemData = this.$store.state.itemDataList;
+  },
+  mounted() {
+    setTimeout(function() {
+      const remarks = document.querySelectorAll(".js-autoLink");
+      Array.prototype.forEach.call(remarks, function(el) {
+        el.innerHTML = autoLink(el.innerHTML);
+      });
+    }, 1500);
+    function autoLink(str) {
+      const regUrl = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g;
+      const makeLink = (str) => {
+        return `<a href="${str}" target="_blank">${str}</a>`;
+      };
+      return str.replace(regUrl, makeLink);
+    }
   },
   data() {
     return {
@@ -102,7 +135,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 .accentImg {
   width: 80px;
@@ -112,6 +145,11 @@ export default {
     fill: #fff;
     width: 100%;
     height: 100%;
+  }
+}
+.js-autoLink {
+  a {
+    color: $secondary !important;
   }
 }
 </style>
