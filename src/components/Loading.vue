@@ -12,7 +12,7 @@ import { mapActions } from "vuex";
 import firebase from "firebase/app";
 import "firebase/auth";
 export default {
-  beforeCreate() {
+  mounted() {
     firebase.auth().onAuthStateChanged(() => {
       this.closeLoading();
     });

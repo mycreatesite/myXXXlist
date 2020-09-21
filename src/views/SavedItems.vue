@@ -4,15 +4,21 @@
       <v-layout row wrap>
         <v-flex xs12 text-center>
           <h1 class="font-weight-bold text-h5 text-md-h4">
-            <span class="font-family-accent"
-              >俺の<br class="d-md-none" />{{ getThemeKeyword }}たち</span
-            >
+            <span class="font-family-accent">
+              <span class="accentImgGroup">
+                <span class="accentImg">
+                  <logo />
+                </span>
+                の
+              </span>
+              {{ getThemeKeyword }}たち
+            </span>
           </h1>
         </v-flex>
 
         <v-flex xs12 mt-10 pb-10 text-center>
           <router-link :to="{ name: 'registform' }">
-            <v-btn tile x-large color="secondary">
+            <v-btn outlined tile color="accent" class="btn-maxLarge">
               {{ getThemeKeyword }}を追加する
             </v-btn>
           </router-link>
@@ -31,11 +37,19 @@
               <router-link
                 :to="{ name: 'registform', params: { item_id: item.id } }"
               >
-                <v-icon large class="mr-2">mdi-pencil</v-icon>
+                <v-btn class="ma-2" tile outlined color="secondary">
+                  <v-icon left>mdi-pencil</v-icon> 編集
+                </v-btn>
               </router-link>
-              <v-icon large class="mr-2" @click="deleteConfirm(item.id)"
-                >mdi-delete</v-icon
+              <v-btn
+                class="ma-2"
+                tile
+                outlined
+                color="disable"
+                @click="deleteConfirm(item.id)"
               >
+                <v-icon left>mdi-delete</v-icon> 削除
+              </v-btn>
             </template>
           </v-data-table>
         </v-flex>
@@ -47,7 +61,11 @@
 <script>
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
+import Logo from "@/components/Logo";
 export default {
+  components: {
+    Logo,
+  },
   created() {
     this.itemData = this.$store.state.itemDataList;
   },
@@ -79,8 +97,21 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
-a {
-  text-decoration: none;
+<style lang="scss">
+.accentImgGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.accentImg {
+  width: 80px;
+  height: 80px;
+  margin-right: 0.5rem;
+  svg {
+    fill: #fff;
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

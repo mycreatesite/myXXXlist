@@ -1,12 +1,16 @@
 <template>
-  <v-container fluid fill-height align-center>
-    <v-container text-center>
+  <v-container fluid fill-height>
+    <v-container pb-16 pb-md-0 text-center>
       <v-layout row wrap>
         <v-flex xs12>
-          <h1 class="siteTitle pb-16 font-family-accent">
+          <h1 class="siteTitle mb-8 mb-md-14 font-family-accent">
             <span class="titleBox">
               <span class="titleBoxInner">
-                <span class="line first">─ORENO─</span>
+                <span class="line first">
+                  <span class="asterisk">*</span>
+                  ORENO
+                  <span class="asterisk">*</span>
+                </span>
                 <span class="lineGroup">
                   <span class="line second">ホッピー</span>
                   <span class="line third">居酒屋</span>
@@ -21,8 +25,13 @@
           </p>
         </v-flex>
 
-        <v-flex xs12 mt-8>
-          <v-btn x-large color="google" @click="login" class="btn-start py-9"
+        <v-flex xs12 mt-4 mt-md-8>
+          <v-btn
+            color="accent"
+            outlined
+            tile
+            @click="login"
+            class="btn-maxLarge"
             >Googleアカウントで<br class="d-md-none" />ホッピーする</v-btn
           >
         </v-flex>
@@ -32,7 +41,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
 export default {
@@ -55,11 +63,10 @@ export default {
     height: 60vw;
     margin: 0 auto;
     padding: 2vw;
+    font-size: calc(1.4rem + 1vw);
     border-radius: 4px;
-    font-size: calc(1.4rem + 0.4vw);
-    background: linear-gradient(145deg, #232323, #1d1d1d),
-      url("/img/pattern.png");
-    box-shadow: 9px 9px 15px #121212, -9px -9px 15px #2e2e2e;
+    background: linear-gradient(145deg, #222222, #1d1d1d);
+    box-shadow: 6px 6px 12px #0d0d0d, -6px -6px 12px #333333;
     .titleBoxInner {
       display: flex;
       flex-direction: column;
@@ -68,10 +75,13 @@ export default {
       border: 6px solid rgba(white, 0.05);
     }
     .first {
-      font-size: 1rem;
-      letter-spacing: 0.5vw;
-      margin-bottom: 1vw;
+      font-size: 0.75rem;
+      letter-spacing: 1vw;
+      margin-bottom: 2vw;
       color: $secondary;
+      .asterisk {
+        vertical-align: -15%;
+      }
     }
     .lineGroup {
       display: flex;
@@ -82,7 +92,7 @@ export default {
       text-shadow: 0 0 15px rgba(#fff, 0.8);
       &.third,
       &.last {
-        letter-spacing: 0.75vw;
+        letter-spacing: 2vw;
       }
     }
   }
@@ -96,11 +106,19 @@ export default {
       min-height: 250px;
       padding: 1vw;
       font-size: calc(1.2rem + 1vw);
+      .line:not(.first) {
+        &.third,
+        &.last {
+          letter-spacing: 0.8vw;
+        }
+      }
+      .first {
+        font-size: 0.9rem;
+        letter-spacing: 0.4vw;
+        margin-bottom: 0.5vw;
+        color: $secondary;
+      }
     }
-  }
-  .rowSecond,
-  .rowThird {
-    letter-spacing: 0.6vw;
   }
 }
 </style>

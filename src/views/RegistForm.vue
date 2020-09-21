@@ -1,8 +1,8 @@
 <template>
   <v-container fluid>
     <v-container text-xs-center>
-      <v-layout row wrap justify-center>
-        <v-flex xs12 pb-10 class="text-center">
+      <v-row justify="center">
+        <v-col cols="12" class="text-center pb-10">
           <h1 class="font-weight-bold text-h5 text-md-h4 font-family-accent">
             <span
               v-if="!$router.currentRoute.params.item_id"
@@ -13,9 +13,9 @@
               {{ getThemeKeyword }}を<br class="d-md-none" />編集する
             </span>
           </h1>
-        </v-flex>
+        </v-col>
 
-        <v-flex xs12 md6 mt-5>
+        <v-col cols="12" md="6" class="mt-5">
           <v-card>
             <v-card-text>
               <v-form>
@@ -35,7 +35,7 @@
                   v-model="itemData.remark"
                   label="備考"
                 ></v-text-field>
-                <div class="text-center">
+                <div class="text-center py-6">
                   <v-btn
                     tile
                     outlined
@@ -56,8 +56,8 @@
               </v-form>
             </v-card-text>
           </v-card>
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
     </v-container>
   </v-container>
 </template>
