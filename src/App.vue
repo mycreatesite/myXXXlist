@@ -7,11 +7,15 @@
       <Logo />
     </div>
     <v-app-bar app color="primary" dark v-if="$store.state.loginUser">
-      <v-app-bar-nav-icon @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
+      <div class="menuLogo" @click.stop="toggleSideMenu">
+        <Logo />
+      </div>
       <v-toolbar-title>俺の{{ getThemeKeyword }}管理帳</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn text @click="logout">ログアウト</v-btn>
+        <v-btn text @click="logout"
+          ><v-icon left>mdi-logout-variant</v-icon>ログアウト</v-btn
+        >
       </v-toolbar-items>
     </v-app-bar>
     <SideNav />
@@ -20,8 +24,8 @@
         <router-view />
       </transition>
     </v-main>
-
     <Loading />
+    <Copyright />
   </v-app>
 </template>
 
@@ -33,6 +37,7 @@ import { mapGetters } from "vuex";
 import SideNav from "@/components/SideNav";
 import Loading from "@/components/Loading";
 import Logo from "@/components/Logo";
+import Copyright from "@/components/Copyright";
 
 export default {
   name: "App",
@@ -40,6 +45,7 @@ export default {
     SideNav,
     Loading,
     Logo,
+    Copyright,
   },
   created() {
     firebase.auth().onAuthStateChanged((user) => {

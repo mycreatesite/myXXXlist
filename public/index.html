@@ -4,7 +4,13 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link rel="manifest" href="<%= BASE_URL %>manifest.json" />
+    <script
+      async
+      src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.10/pwacompat.min.js"
+      integrity="sha384-I1iiXcTSM6j2xczpDckV+qhhbqiip6FyD6R5CpuqNaWXvyDUvXN5ZhIiyLQ7uuTh"
+      crossorigin="anonymous"
+    ></script>
     <title><%= htmlWebpackPlugin.options.title %></title>
     <meta
       name="description"
@@ -19,10 +25,16 @@
     />
     <meta
       property="og:image"
-      content="https://my-xxx-list-pj.web.app/ogp-image.jpg"
+      content="https://my-xxx-list-pj.web.app/img/icons/ogp-image.jpg"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@hello_myscreate" />
+    <meta name="theme-color" content="#af8a1e" />
+    <link
+      rel="apple-touch-icon"
+      href="<%= BASE_URL %>img/icons/icon-192x192.png"
+      sizes="192x192"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"

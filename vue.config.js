@@ -7,4 +7,10 @@ module.exports = {
       keyword: "ホッピー居酒屋",
     },
   },
+  pwa: {
+    iconPaths: {
+      favicon32: "img/icons/favicon.ico",
+      favicon16: "img/icons/favicon.ico",
+    },
+  },
 };

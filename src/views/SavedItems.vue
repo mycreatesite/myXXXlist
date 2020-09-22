@@ -16,9 +16,10 @@
           </h1>
         </v-col>
 
-        <v-col cols="12" class="text-center mt-6 pb-8">
+        <v-col cols="12" class="text-center mt-4 pb-8">
           <router-link :to="{ name: 'registform' }">
             <v-btn outlined tile color="accent" class="btn-maxLarge">
+              <v-icon left>mdi-plus</v-icon>
               {{ getThemeKeyword }}を追加する
             </v-btn>
           </router-link>

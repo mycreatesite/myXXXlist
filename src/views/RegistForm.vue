@@ -36,24 +36,33 @@
                   v-model="itemData.remark"
                   label="備考"
                 ></v-textarea>
-                <div class="text-center py-6">
-                  <v-btn
-                    tile
-                    outlined
-                    large
-                    color="disable"
-                    @click="$router.push({ name: 'saveditems' })"
-                    >キャンセル</v-btn
-                  >
-                  <v-btn
-                    tile
-                    large
-                    color="secondary"
-                    class="ml-2"
-                    @click="submit"
-                    >保存</v-btn
-                  >
-                </div>
+                <v-container class="pt-0">
+                  <v-row>
+                    <v-col cols="6">
+                      <v-btn
+                        tile
+                        outlined
+                        x-large
+                        block
+                        color="disable"
+                        @click="$router.push({ name: 'saveditems' })"
+                        >キャンセル</v-btn
+                      >
+                    </v-col>
+                    <v-col cols="6">
+                      <v-btn
+                        tile
+                        x-large
+                        block
+                        color="secondary"
+                        class="ml-2"
+                        @click="submit"
+                      >
+                        <v-icon left>mdi-glass-mug-variant</v-icon>保存
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
               </v-form>
             </v-card-text>
           </v-card>
