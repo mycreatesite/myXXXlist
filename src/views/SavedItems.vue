@@ -89,12 +89,13 @@ export default {
     this.itemData = this.$store.state.itemDataList;
   },
   mounted() {
+    const wait = 2000;
     setTimeout(function() {
       const remarks = document.querySelectorAll(".js-autoLink");
       Array.prototype.forEach.call(remarks, function(el) {
         el.innerHTML = autoLink(el.innerHTML);
       });
-    }, 1500);
+    }, wait);
     function autoLink(str) {
       const regUrl = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g;
       const makeLink = (str) => {
