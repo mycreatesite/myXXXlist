@@ -36,6 +36,7 @@
           >
             <template v-slot:item.tel="{ item }">
               <v-btn
+                v-if="item.tel"
                 block
                 large
                 tile

@@ -94,6 +94,20 @@ export default {
   },
   methods: {
     submit() {
+      const excludeIdObj = Object.assign({}, this.itemData);
+      delete excludeIdObj.id;
+      if (isEmptyObj(excludeIdObj)) {
+        alert("なんか1つくらい記入したらどうだい");
+        return;
+      }
+      function isEmptyObj(obj) {
+        for (let i in obj) {
+          if (obj[i]) {
+            return false;
+          }
+        }
+        return true;
+      }
       if (this.$route.params.item_id) {
         this.updateItemData({
           id: this.$route.params.item_id,
