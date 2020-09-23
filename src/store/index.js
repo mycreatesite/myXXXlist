@@ -17,6 +17,7 @@ export default new Vuex.Store({
       title: vueConfig.pages.index.title,
       keyword: vueConfig.pages.index.keyword,
       img: "/img/theme.png",
+      credit: "hoppy-happy.com",
     },
   },
   mutations: {
@@ -124,5 +125,6 @@ export default new Vuex.Store({
       state.itemDataList.find((itemData) => itemData.id === id),
     getThemeKeyword: (state) => state.theme.keyword,
     getThemeImg: (state) => state.theme.img,
+    getThemeCredit: (state) => state.theme.credit,
   },
 });

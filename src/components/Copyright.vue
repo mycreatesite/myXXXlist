@@ -8,13 +8,17 @@
         />
       </a>
     </div>
-    <small class="copyright"
-      >© Copyright {{ now }} │ ma-ya's CREATE All rights reserved.</small
-    >
+    <div class="copyright">
+      <small>© Copyright {{ now }} │ ma-ya's CREATE All rights reserved.</small>
+    </div>
+    <div class="credit">
+      <small>photo by {{ getThemeCredit }}</small>
+    </div>
   </footer>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -25,17 +29,22 @@ export default {
     const date = new Date();
     this.now = date.getFullYear();
   },
+  computed: {
+    ...mapGetters(["getThemeCredit"]),
+  },
 };
 </script>
 
 <style scoped lang="scss">
 .footer {
   padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .mysLogo {
   width: 70px;
   height: 35px;
-  margin: 0 auto;
   a {
     display: block;
     opacity: 0.3;
@@ -45,7 +54,16 @@ export default {
     }
   }
 }
+.copyright,
+.credit {
+  font-size: 0.7rem;
+  opacity: 0.3;
+}
 .copyright {
+  margin-top: 0.3rem;
+}
+
+.credit {
   font-size: 0.7rem;
   opacity: 0.3;
 }
