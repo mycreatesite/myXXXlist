@@ -35,9 +35,17 @@
             :no-data-text="emptyText"
           >
             <template v-slot:item.tel="{ item }">
-              <v-btn block large tile color="secondary">
+              <v-btn
+                block
+                large
+                tile
+                tag="a"
+                color="secondary"
+                class="d-block d-flex align-center"
+                :href="`tel:${item.tel}`"
+              >
                 <v-icon left>mdi-phone-in-talk</v-icon>
-                <a :href="`tel:${item.tel}`">{{ item.tel }}</a>
+                {{ item.tel }}
               </v-btn>
             </template>
             <template v-slot:item.remark="{ item }">
