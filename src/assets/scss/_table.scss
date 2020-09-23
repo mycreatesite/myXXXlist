@@ -3,7 +3,7 @@
   > table
   > tbody
   > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {
-  background: rgba(#616161, 0.1) !important;
+  background: rgba(#616161, 0.2) !important;
 }
 
 .v-data-table.itemList {
@@ -30,8 +30,9 @@
     }
     .v-data-table__mobile-table-row {
       display: block;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      &:nth-of-type(odd) {
+        background-color: rgba(lighten($primary, 10%), 0.3);
+      }
     }
     .v-data-table-header-mobile {
       tr th {
@@ -39,8 +40,10 @@
       }
     }
     .v-data-table__mobile-row {
+      &:first-of-type {
+        padding-top: 2rem;
+      }
       &:last-of-type {
-        padding-bottom: 2rem;
         .v-data-table__mobile-row__cell {
           text-align: right;
         }
@@ -53,7 +56,7 @@
     }
     .v-data-table__mobile-row__cell {
       text-align: left;
-      margin-bottom: 1.6rem;
+      margin-bottom: 1rem;
       font-size: 1.1rem;
     }
     .v-select__slot {
