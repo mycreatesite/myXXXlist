@@ -1,6 +1,6 @@
 <template>
   <v-container fluid fill-height>
-    <v-container pb-16 pb-md-0 text-center>
+    <v-container pb-16 pb-md-0 pt-16 pt-md-0 text-center>
       <v-layout row wrap>
         <v-flex xs12>
           <h1 class="siteTitle mb-8 mb-md-14 font-family-accent">
@@ -19,7 +19,7 @@
               </span>
             </span>
           </h1>
-          <p>
+          <p class="description">
             俺の<span>{{ getThemeKeyword }}</span
             >管理帳をご利用の方は、<br />Googleアカウントでホッピーしてください。<br />
             自分だけのホッピー居酒屋リストを作成しよう。
@@ -57,6 +57,12 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/mixin";
 
+.description {
+  font-size: 0.75rem;
+  @include media-up(sm) {
+    font-size: 1rem;
+  }
+}
 .siteTitle {
   .titleBox {
     display: block;
