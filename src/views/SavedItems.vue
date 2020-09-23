@@ -32,7 +32,7 @@
             :header-props="headerProps"
             mobile-breakpoint="960"
             class="itemList"
-            no-data-text="データが無いっす。"
+            :no-data-text="emptyText"
           >
             <template v-slot:item.tel="{ item }">
               <v-btn block large tile color="secondary">
@@ -117,6 +117,8 @@ export default {
       headerProps: {
         sortByText: "並べ替え",
       },
+      emptyText: `ついつい忘れがちな「あの居酒屋ホッピー置いてたっけ？」。
+									自分だけのホッピー居酒屋リストを作成するがよい。`,
     };
   },
   methods: {

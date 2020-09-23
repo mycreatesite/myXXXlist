@@ -67,7 +67,10 @@
     }
     .v-data-table__empty-wrapper {
       td {
+        text-align: center;
         padding: 3rem;
+        white-space: pre-line;
+        line-height: 2;
       }
     }
 
