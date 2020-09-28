@@ -53,6 +53,7 @@
 
 	.description {
 		font-size: 0.8rem;
+		margin-bottom: 0;
 
 		@include media-up(sm) {
 			font-size: 1rem;

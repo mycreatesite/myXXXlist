@@ -57,8 +57,10 @@
 
 	.copyright,
 	.credit {
-		font-size: 0.8rem;
-		opacity: 0.3;
+		small {
+			font-size: 0.75rem;
+			opacity: 0.3;
+		}
 	}
 
 	.copyright {
@@ -66,6 +68,6 @@
 	}
 
 	.credit {
-		margin-top: -0.3rem;
+		margin-top: -0.5rem;
 	}
 </style>
