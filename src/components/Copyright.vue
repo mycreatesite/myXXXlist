@@ -1,7 +1,7 @@
 <template>
 	<footer class="footer text-center">
 		<div class="mysLogo">
-			<a href="https://myscreate.com/" target="_blank">
+			<a href="https://myscreate.com/" target="_blank" rel="noopener">
 				<img src="https://myscreate.com/wp-content/themes/mycreate/common/img/myc_logo_w.svg" alt="ma-ya's CREATE" />
 			</a>
 		</div>
