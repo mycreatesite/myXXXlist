@@ -52,7 +52,7 @@
 	@import "@/assets/scss/mixin";
 
 	.description {
-		font-size: 0.75rem;
+		font-size: 0.8rem;
 
 		@include media-up(sm) {
 			font-size: 1rem;
@@ -80,9 +80,8 @@
 			}
 
 			.first {
-				font-size: 0.75rem;
+				font-size: 0.8rem;
 				letter-spacing: 1vw;
-				margin-bottom: 2vw;
 				color: $secondary;
 
 				.asterisk {
