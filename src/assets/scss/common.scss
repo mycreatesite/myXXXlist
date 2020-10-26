@@ -123,6 +123,9 @@ a {
 
 .theme--dark {
   &.v-application {
+    .v-navigation-drawer--absolute {
+      position: fixed;
+    }
     .v-navigation-drawer {
       background-color: $primary;
     }
