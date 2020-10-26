@@ -16,7 +16,7 @@
           </h1>
         </v-col>
 
-        <v-col cols="12" class="text-center mt-4 pb-8">
+        <v-col cols="12" class="text-center mt-4 pb-4">
           <router-link :to="{ name: 'registform' }">
             <v-btn outlined tile color="accent" class="btn-maxLarge">
               <v-icon left>mdi-plus</v-icon>
@@ -25,14 +25,20 @@
           </router-link>
         </v-col>
 
-        <v-col cols="12" justify-center class="mt-3">
+        <v-col cols="12" class="mt-3">
+					<v-row justify="center">
+						<v-col cols="12" md="6" class="mb-6">
+							<v-text-field class="searchBtn" v-model="search" append-icon="mdi-magnify" label="検索" single-line hide-details></v-text-field>
+						</v-col>
+					</v-row>
           <v-data-table
             :headers="headers"
             :items="itemData"
             :header-props="headerProps"
             mobile-breakpoint="960"
             class="itemList"
-            :no-data-text="emptyText"
+						:no-data-text="emptyText"
+						:search="search"
           >
             <template v-slot:item.tel="{ item }">
               <v-btn
@@ -50,7 +56,7 @@
               </v-btn>
             </template>
             <template v-slot:item.remark="{ item }">
-              <div class="js-autoLink">{{ item.remark }}</div>
+              <span class="remarkLink" v-html="item.remark"></span>
             </template>
             <template v-slot:item.action="{ item }">
               <v-row class="wrap">
@@ -95,26 +101,26 @@ export default {
     Logo,
   },
   created() {
-    this.itemData = this.$store.state.itemDataList;
-  },
-  mounted() {
-    const wait = 2000;
-    setTimeout(function() {
-      const remarks = document.querySelectorAll(".js-autoLink");
-      Array.prototype.forEach.call(remarks, function(el) {
-        el.innerHTML = autoLink(el.innerHTML);
-      });
-    }, wait);
-    function autoLink(str) {
-      const regUrl = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g;
-      const makeLink = (str) => {
-        return `<a href="${str}" target="_blank">${str}</a>`;
-      };
-      return str.replace(regUrl, makeLink);
-    }
+		const self = this;
+		self.itemData = this.$store.state.itemDataList;
+		setTimeout(function () {
+			self.itemData.forEach((item) => {
+				if(!item.remark.match(/<\/a>/)) {
+					item.remark = autoLink(item.remark);
+				}
+			});
+		}, 2000);
+		function autoLink(str) {
+			const regUrl = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g;
+			const makeLink = (str) => {
+				return `<a href="${str}" target="_blank">${str}</a>`;
+			};
+			return str.replace(regUrl, makeLink);
+		}
   },
   data() {
     return {
+			search: '',
       headers: [
         { text: "店名", value: "name" },
         { text: "電話番号", value: "tel" },
@@ -136,7 +142,10 @@ export default {
       if (confirm("削除しますか？")) {
         this.deleteItemData({ id });
       }
-    },
+		},
+		updatePagination(){
+			console.log('updatePagination');
+		},
     ...mapActions(["deleteItemData"]),
   },
   computed: {
@@ -161,7 +170,14 @@ export default {
     height: 100%;
   }
 }
-.js-autoLink {
+.sortable {
+	white-space: nowrap;
+}
+.v-text-field--single-line.searchBtn {
+	padding: 0 16px;
+	margin: 0;
+}
+.remarkLink {
   a {
     color: $secondary !important;
   }
