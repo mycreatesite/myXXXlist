@@ -35,17 +35,18 @@
 	</v-container>
 </template>
 
-<script>
+<script lang="ts">
+	import Vue from "vue";
 	import { mapActions } from "vuex";
 	import { mapGetters } from "vuex";
-	export default {
+	export default Vue.extend({
 		methods: {
 			...mapActions(["login"]),
 		},
 		computed: {
 			...mapGetters(["getThemeKeyword", "getThemeImg"]),
 		},
-	};
+	});
 </script>
 
 <style lang="scss">

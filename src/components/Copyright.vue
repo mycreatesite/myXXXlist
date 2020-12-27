@@ -14,12 +14,13 @@
 	</footer>
 </template>
 
-<script>
+<script lang="ts">
+	import Vue from "vue";
 	import { mapGetters } from "vuex";
-	export default {
+	export default Vue.extend({
 		data() {
 			return {
-				now: "",
+				now: 0,
 			};
 		},
 		created() {
@@ -29,7 +30,7 @@
 		computed: {
 			...mapGetters(["getThemeCredit"]),
 		},
-	};
+	});
 </script>
 
 <style scoped lang="scss">

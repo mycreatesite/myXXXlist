@@ -11,12 +11,13 @@
   </transition>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import { mapActions } from "vuex";
 import firebase from "firebase/app";
 import "firebase/auth";
-import Logo from "@/components/Logo";
-export default {
+import Logo from "@/components/Logo.vue";
+	export default Vue.extend({
   components: {
     Logo,
   },
@@ -28,7 +29,7 @@ export default {
   methods: {
     ...mapActions(["login", "closeLoading"]),
   },
-};
+});
 </script>
 
 <style scoped lang="scss">

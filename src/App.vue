@@ -29,17 +29,18 @@
   </v-app>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
-import SideNav from "@/components/SideNav";
-import Loading from "@/components/Loading";
-import Logo from "@/components/Logo";
-import Copyright from "@/components/Copyright";
+import SideNav from "@/components/SideNav.vue";
+import Loading from "@/components/Loading.vue";
+import Logo from "@/components/Logo.vue";
+import Copyright from "@/components/Copyright.vue";
 
-export default {
+export default Vue.extend({
   name: "App",
   components: {
     SideNav,
@@ -86,7 +87,7 @@ export default {
   computed: {
     ...mapGetters(["getThemeKeyword", "getThemeImg"]),
   },
-};
+});
 </script>
 <style lang="scss">
 @import "@/assets/scss/mixin.scss";

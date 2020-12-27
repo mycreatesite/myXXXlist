@@ -72,10 +72,11 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
-export default {
+	export default Vue.extend({
   created() {
     if (!this.$route.params.item_id) return;
     const itemData = this.$store.getters.getItemDataById(
@@ -94,13 +95,13 @@ export default {
   },
   methods: {
     submit() {
-      const excludeIdObj = Object.assign({}, this.itemData);
+      const excludeIdObj: any = Object.assign({}, this.itemData);
       delete excludeIdObj.id;
       if (isEmptyObj(excludeIdObj)) {
         alert("なんか1つくらい記入したらどうだい");
         return;
       }
-      function isEmptyObj(obj) {
+      function isEmptyObj(obj: any) {
         for (let i in obj) {
           if (obj[i]) {
             return false;
@@ -124,5 +125,5 @@ export default {
   computed: {
     ...mapGetters(["getThemeKeyword", "getThemeImg"]),
   },
-};
+});
 </script>

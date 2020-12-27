@@ -24,9 +24,10 @@
   </v-navigation-drawer>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import { mapGetters } from "vuex";
-export default {
+	export default Vue.extend({
   data() {
     return {
       items: [
@@ -41,5 +42,5 @@ export default {
   computed: {
     ...mapGetters(["userName", "photoURL"]),
   },
-};
+});
 </script>

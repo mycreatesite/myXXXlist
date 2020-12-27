@@ -92,11 +92,12 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
-import Logo from "@/components/Logo";
-export default {
+import Logo from "@/components/Logo.vue";
+export default Vue.extend({
   components: {
     Logo,
   },
@@ -104,15 +105,15 @@ export default {
 		const self = this;
 		self.itemData = this.$store.state.itemDataList;
 		setTimeout(function () {
-			self.itemData.forEach((item) => {
+			self.itemData.forEach((item: any) => {
 				if(!item.remark.match(/<\/a>/)) {
 					item.remark = autoLink(item.remark);
 				}
 			});
 		}, 2000);
-		function autoLink(str) {
+		function autoLink(str: any) {
 			const regUrl = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g;
-			const makeLink = (str) => {
+			const makeLink = (str: any) => {
 				return `<a href="${str}" target="_blank">${str}</a>`;
 			};
 			return str.replace(regUrl, makeLink);
@@ -138,20 +139,20 @@ export default {
     };
   },
   methods: {
-    deleteConfirm(id) {
+    deleteConfirm(id: any) {
       if (confirm("削除しますか？")) {
         this.deleteItemData({ id });
       }
 		},
-		updatePagination(){
-			console.log('updatePagination');
-		},
+		// updatePagination(){
+		// 	console.log('updatePagination');
+		// },
     ...mapActions(["deleteItemData"]),
   },
   computed: {
     ...mapGetters(["getThemeKeyword", "getThemeImg"]),
   },
-};
+});
 </script>
 <style lang="scss">
 .accentImgGroup {
