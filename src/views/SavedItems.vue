@@ -40,7 +40,7 @@
 						:no-data-text="emptyText"
 						:search="search"
           >
-            <template v-slot:item.tel="{ item }">
+            <template v-slot:[`item.tel`]="{ item }">
               <v-btn
                 v-if="item.tel"
                 block
@@ -55,10 +55,10 @@
                 {{ item.tel }}
               </v-btn>
             </template>
-            <template v-slot:item.remark="{ item }">
+            <template v-slot:[`item.remark`]="{ item }">
               <span class="remarkLink" v-html="item.remark"></span>
             </template>
-            <template v-slot:item.action="{ item }">
+            <template v-slot:[`item.action`]="{ item }">
               <v-row class="wrap">
                 <v-col cols="6" md="12">
                   <router-link
@@ -111,9 +111,9 @@ export default Vue.extend({
 				}
 			});
 		}, 2000);
-		function autoLink(str: any) {
+		function autoLink(str: string) {
 			const regUrl = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g;
-			const makeLink = (str: any) => {
+			const makeLink = (str: string) => {
 				return `<a href="${str}" target="_blank">${str}</a>`;
 			};
 			return str.replace(regUrl, makeLink);
@@ -139,7 +139,7 @@ export default Vue.extend({
     };
   },
   methods: {
-    deleteConfirm(id: any) {
+    deleteConfirm(id: string) {
       if (confirm("削除しますか？")) {
         this.deleteItemData({ id });
       }

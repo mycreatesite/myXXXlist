@@ -33,11 +33,11 @@ export default new Vuex.Store({
     deleteLoginUser(state) {
       state.loginUser = null;
     },
-    addItemData(state: any, { id, itemData }) {
+    addItemData(state: state, { id, itemData }) {
       itemData.id = id;
       state.itemDataList.push(itemData);
     },
-    updateItemData(state: any, { id, itemData }) {
+    updateItemData(state: state, { id, itemData }) {
       const index = state.itemDataList.findIndex(
         (itemData: any) => itemData.id === id
       );
@@ -118,13 +118,13 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    userName: (state: any) => (state.loginUser ? state.loginUser.displayName : ""),
-    photoURL: (state: any) => (state.loginUser ? state.loginUser.photoURL : ""),
-    uid: (state: any) => (state.loginUser ? state.loginUser.uid : null),
-    getItemDataById: (state) => (id: any) =>
-      state.itemDataList.find((itemData: any) => itemData.id === id),
-    getThemeKeyword: (state) => state.theme.keyword,
-    getThemeImg: (state) => state.theme.img,
-    getThemeCredit: (state) => state.theme.credit,
+    userName: (state: state): string | null =>  {console.log(state.itemDataList);return state.loginUser ? state.loginUser.displayName : ""},
+    photoURL: (state: state): string | null => (state.loginUser ? state.loginUser.photoURL : ""),
+    uid: (state: state): string | null => (state.loginUser ? state.loginUser.uid : null),
+    getItemDataById: (state) => (id: string | void) =>
+      state.itemDataList.find((itemData: itemData) => itemData.id === id),
+    getThemeKeyword: (state): string => state.theme.keyword,
+    getThemeImg: (state): string => state.theme.img,
+    getThemeCredit: (state): string => state.theme.credit,
   },
 });
